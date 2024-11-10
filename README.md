@@ -1,5 +1,5 @@
 # Spring Boot CRUD Application 
-![banner](./assets/banner.jpg)
+![banner](./Assets/banner.PNG)
 
 ## Introduction
 
@@ -32,46 +32,66 @@ The following are the base folders in which the project is organized and the pur
 
 
 ## Testing the Application
-1. `Create New User`
-- URL: http://127.0.0.1:8080/api/v1/apps
+1. `Create New User as a SignUp`
+- URL: (http://localhost:8090/auth/signup)
 - HTTP Method: POST
 - Body:
   ````json
   {
-    "appName": "netflix",
-    "appVersion": "0.0.0",
-    "devName": "David Archanjo"
+   "username" : "Deepak Kumar",
+    "userEmail" : "deepak12@gmail.com",
+    "userPassword" : "password"
   }
   ````
-  ![createNewApp](./assets/createNewApp.jpg)
+  ![SingUp](Assets/SignUpUser.PNG)
  
+We have Sucessfully registered a New User.
 
-2. `Get App by ID`
-- URL: http://127.0.0.1:8080/api/v1/apps/{appId} 
-- HTTP Method: GET
-  ![getAppById](./assets/getAppById.jpg)
- 
-
-3. `Update App`
-- HTTP Method: PUT
-- URL: http://127.0.0.1:8080/api/v1/apps/{appId}
+2. `Login the User for Authentication``
+- URL: (http://localhost:8090/auth/login))
+- HTTP Method: POST
 - Body:
   ````json
   {
-    "appName": "netflix",
-    "appVersion": "1.0.0",
-    "devName": "David Archanjo"
+   "userName": "Deepak Kumar",
+    "password" : "password"
   }
   ````
-  ![updateApp](./assets/updateApp.jpg)
+  ![Login](Assets/login.PNG)
+ 
+We have Sucessfully authenticated User & generated the JWT token.
 
-4. `Delete App`
+If we try to Access any other API without Valid Token It will throw an 401 Not Authorized Exception
+ ![NotAuth]Assets/getAllWrongToken.PNG)
+
+3. `Get All Users `
+- URL: http://localhost:8090/api/users/getAllUsers
+- HTTP Method: GET
+  ![GetAllUsers](Assets/getAllUsers.PNG)
+ 
+
+3. `Updating User`
+- HTTP Method: PUT
+- URL:(http://localhost:8090/api/users/{userId})
+- Body:
+  ````json
+  {
+  "username": "Deepak Gupta",
+    "userEmail": "deepak123@gmail.com",
+    "userPassword": "passwords"
+  }
+  ````
+  ![UpdatingUser](Assets/newupdatess.PNG)
+
+We have Updated the Name Email & Password for the User.
+
+4. `Deleting the User`
 - HTTP Method: DELETE
-- URL: http://127.0.0.1:8080/api/v1/apps/{appId}
-  ![banner](./assets/deleteApp.jpg)
+- URL: (http://localhost:8090/api/users/{userID})
+  ![DeleteUser](Assets/deletebyid.PNG)
   
-  If we try to look up the deleted application by its id we will get an HTTP 404 status code response:
-  ![banner](./assets/getAppById404.jpg)
+  If we try to look up the deleted User by its id we will get an HTTP 404 status code response:
+  ![DeletedUser](Assets/get_after_delete.PNG)
 
 
 ## Unit Test
