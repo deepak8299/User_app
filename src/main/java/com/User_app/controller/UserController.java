@@ -17,46 +17,42 @@ import com.User_app.payload.UserDto;
 import com.User_app.service.UserService;
 import jakarta.validation.Valid;
 
-
-
-
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
-	
+
 	// add new User
-	@PostMapping("/signup")
-	public ResponseEntity<UserDto> createNewUser(@Valid @RequestBody UserDto userDto){
+	@PostMapping("/addUser")
+	public ResponseEntity<UserDto> createNewUser(@Valid @RequestBody UserDto userDto) {
 		UserDto savedUserDto = this.userService.addUser(userDto);
 		return new ResponseEntity<>(savedUserDto, HttpStatus.CREATED);
-		
+
 	}
-	
+
 	@DeleteMapping("/{userId}")
-	public ResponseEntity<UserDto> deleteUser(@PathVariable long userId){
+	public ResponseEntity<UserDto> deleteUser(@PathVariable long userId) {
 		UserDto deletedUserDto = this.userService.deleteUser(userId);
 		return new ResponseEntity<>(deletedUserDto, HttpStatus.OK);
 	}
-	
-	//update user details
+
+	// update user details
 	@PutMapping("/{userId}")
-	public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto userDto, @PathVariable long userId){
+	public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto userDto, @PathVariable long userId) {
 		UserDto updatedUserDto = this.userService.updateUser(userDto, userId);
 		return new ResponseEntity<>(updatedUserDto, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/{userId}")
-	public ResponseEntity<UserDto> getUserById(@PathVariable long userId){
+	public ResponseEntity<UserDto> getUserById(@PathVariable long userId) {
 		UserDto userDto = this.userService.getByUserId(userId);
 		return new ResponseEntity<>(userDto, HttpStatus.OK);
 	}
-	
-	@GetMapping("/")
-	public ResponseEntity<List<UserDto>> getAllUsers(){
+
+	@GetMapping("/getAllUsers")
+	public ResponseEntity<List<UserDto>> getAllUsers() {
 		List<UserDto> userDtos = this.userService.getAllUser();
 		return new ResponseEntity<>(userDtos, HttpStatus.OK);
 	}
