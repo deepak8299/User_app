@@ -11,14 +11,14 @@ I am using **Spring Boot** in implementing a CRUD ( **C**reate, **R**ead, **U**p
  Here is the Project Structure Explained.
 
 The following are the base folders in which the project is organized and the purpose of each:
-- [📁 application](User_app/src/main/java/com): contains the main class, annotated with `@SpringBootApplication`, which is responsible for booting up the application;
-- [📁 configuration](User_app/src/main/java/com/User_app/configuration): contain the Security configuration classes annotated with `@Configuration`;
+- [📁 application](src/main/java/com/User_app): contains the main class, annotated with `@SpringBootApplication`, which is responsible for booting up the application;
+- [📁 configuration](src/main/java/com/User_app/configuration): contain the Security configuration classes annotated with `@Configuration`;
 - [📁 controller](src/main/java/com/User_app/controller): contain classes annotated with `@RestController` responsible for processing incoming REST API requests;
 - [📁 exception](src/main/java/com/User_app/exception): contain custom exceptions for handling specific data consistent and/or business rule violations;
 - [📁 entity](src/main/java/com/User_app/entity): contain POJO classes (a.k.a. **P**lain **O**ld **J**ava **O**bject) annotated with `@Entity` representing database entities i.e., classes mapping database tables;
 - [📁 repository](src/main/java/com/User_app/repository): contain classes annotated with `@Repository` responsible for providing the mechanism for storage, retrieval, search, update and delete operation on objects usually present in a database;
 - [📁 service](src/main/java/com/User_app/service): contains class annotated with `@Service` in which business logic is implemented;
-- [📁 securit](src/main/java/com/User_app/securities): contains classes which are responsible for JWT Filters, Entry points & Authentications;
+- [📁 security](src/main/java/com/User_app/securities): contains classes which are responsible for JWT Filters, Entry points & Authentications;
 
 ## Booting Up the Application
 <ol>
